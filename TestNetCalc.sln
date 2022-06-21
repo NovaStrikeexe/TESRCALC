@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetCalc", "TestNetCalc\TestNetCalc.csproj", "{1AC37E42-C849-4B7F-935E-4F738325252D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AC37E42-C849-4B7F-935E-4F738325252D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC37E42-C849-4B7F-935E-4F738325252D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC37E42-C849-4B7F-935E-4F738325252D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC37E42-C849-4B7F-935E-4F738325252D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95B54AC1-CB66-4A5F-A064-2874E464CC2E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,67 @@
+﻿@model TestNetCalc.Models.ExpressionString
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">TEST NET CALC</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<body>
+    <div class="box">
+        @using (Html.BeginForm("Calc", "CalculatorController", FormMethod.Post))
+        {
+        <div class="display">
+            <input id="ExpressionStr" name="ExpressionStr" type="text" readonly="readonly" value="" runat="server">
+        </div>
+            <div class="keys">
+                <p>
+                    <input type="button" class="button gray" value="!" onclick='c("In")'>
+                    <input type="button" class="button gray" value="(" onclick='c("Curent")'>
+                    <input type="button" class="button gray" value=")" onclick='c("Development")'>
+                    <input type="button" class="button pink" value="+" onclick='v("+")'>
+                </p>
+                <p>
+                    <input type="button" class="button black" value="7" onclick='v("7")'>
+                    <input type="button" class="button black" value="8" onclick='v("8")'>
+                    <input type="button" class="button black" value="9" onclick='v("9")'>
+                    <input type="button" class="button pink" value="-" onclick='v("-")'>
+
+                </p>
+                <p>
+                    <input type="button" class="button black" value="4" onclick='v("4")'>
+                    <input type="button" class="button black" value="5" onclick='v("5")'>
+                    <input type="button" class="button black" value="6" onclick='v("6")'>
+                    <input type="button" class="button pink" value="*" onclick='v("*")'>
+
+                </p>
+                <p>
+                    <input type="button" class="button black" value="1" onclick='v("1")'>
+                    <input type="button" class="button black" value="2" onclick='v("2")'>
+                    <input type="button" class="button black" value="3" onclick='v("3")'>
+                    <input type="button" class="button pink" value="/" onclick='v("/")'>
+
+
+                </p>
+                <p>
+                    <input type="button" class="button black" value="0" onclick='v("0")'>
+                    <input type="button" class="button black" value="." onclick='v(".")'>
+                    <input type="button" class="button black" value="C" onclick='c("")'>
+                    <input type="submit" class="button orange" value="=" asp-controller="Calculator" asp-action="Calc">
+                </p>
+            </div>
+        }
+    </div>
+</body>
+
+
+<script>
+    function c(val) {
+        document.getElementById("ExpressionStr").value = val;
+    }
+    function v(val) {
+        document.getElementById("ExpressionStr").value += val;
+    }
+</script>
