@@ -10,16 +10,22 @@ namespace TestNetCalc.Controllers
     {
         public IActionResult Calc()
         {
-            return View();
+            ExpressionString expressionString = new ExpressionString();
+            expressionString.StringExpression = "0";
+            return View(expressionString);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Calc(string expression) 
+        public async Task<ActionResult> Calc(string expression)
         {
             ExpressionString expressionString = new ExpressionString();
             expressionString.StringExpression = Request.Form["ExpressionStr"];
 
-            if (expressionString.StringExpression != "")
+            if (expressionString.StringExpression == "" || expressionString.StringExpression == "0")
+            {
+                return View(expressionString);
+            }
+            else
             {
                 try
                 {
@@ -30,12 +36,8 @@ namespace TestNetCalc.Controllers
                     expressionString.StringExpression = "Unexpected expression";
                 }
             }
-            else 
-            { 
-                return View(expressionString); 
-            }
 
-            return View( expressionString);
+            return View(expressionString);
         }
 
     }

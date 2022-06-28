@@ -1,3 +1,4 @@
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -19,6 +20,8 @@ namespace TestNetCalc
             })
           .ConfigureWebHostDefaults(webBuilder =>
           {
+              webBuilder.UseKestrel();
+              webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
               webBuilder.UseStartup<Startup>();
               webBuilder.ConfigureKestrel(KestrelServerOptions =>
               {
@@ -27,6 +30,7 @@ namespace TestNetCalc
                   KestrelServerOptions.Limits.Http2.MaxStreamsPerConnection = 1000;
                   KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 1000;
               });
+
           });
     }
 }

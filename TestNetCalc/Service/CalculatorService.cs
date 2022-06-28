@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using TestNetCalc.Models;
 
 namespace TestNetCalc.Service
@@ -35,10 +31,11 @@ namespace TestNetCalc.Service
                 }
             }
             return JsonSerializer.Serialize<MathExpression>(
-                new MathExpression { 
-                    NumberOne = NumberOne.ToString(), 
-                    NumberTwo = NumberTwo.ToString(), 
-                    TypeOperation = TypeOperation 
+                new MathExpression
+                {
+                    NumberOne = NumberOne.ToString(),
+                    NumberTwo = NumberTwo.ToString(),
+                    TypeOperation = TypeOperation
                 });
         }
         internal static MathExpression ConvertToExpressionType(string ExpressionJsonString)
