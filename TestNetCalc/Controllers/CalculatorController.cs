@@ -14,10 +14,10 @@ namespace TestNetCalc.Controllers
             expressionString.StringExpression = "0";
             return View(expressionString);
         }
-
         [HttpPost]
         public async Task<ActionResult> Calc(string expression)
         {
+
             ExpressionString expressionString = new ExpressionString();
             expressionString.StringExpression = Request.Form["ExpressionStr"];
 
@@ -29,7 +29,8 @@ namespace TestNetCalc.Controllers
             {
                 try
                 {
-                    expressionString.StringExpression = CalculatorService.ReturnResultOfExpession(expressionString.StringExpression);
+                    var expTask = Task.Run(() => CalculatorService.ReturnResultOfExpession(expressionString.StringExpression));
+                    expressionString.StringExpression = await expTask;
                 }
                 catch (Exception)
                 {
