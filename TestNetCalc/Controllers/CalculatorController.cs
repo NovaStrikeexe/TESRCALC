@@ -11,7 +11,6 @@ namespace TestNetCalc.Controllers
         public IActionResult Calc()
         {
             ExpressionString expressionString = new ExpressionString();
-            expressionString.StringExpression = "0";
             return View(expressionString);
         }
         [HttpPost]
