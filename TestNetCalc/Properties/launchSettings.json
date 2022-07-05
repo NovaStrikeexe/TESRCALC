@@ -1,11 +1,4 @@
 ﻿{
-  "Kestrel": {
-    "Limits": {
-      "MaxConcurrentConnections": 1000,
-      "MaxConcurrentUpgradedConnections": 1000
-    },
-    "DisableStringReuse": true
-  },
   "TestNetCalc": {
     "commandName": "Project",
     "dotnetRunMessages": "true",

@@ -49,19 +49,27 @@ namespace TestNetCalc.Service
             string exp = ExpresionToJson(expression);
             MathExpression expr = ConvertToExpressionType(exp);
             var BaseCalculator = new BaseCalculator();
-            switch (expr.TypeOperation)
+            if (expr.NumberTwo.Equals(""))
             {
-                case '+':
-                    return BaseCalculator.Addition(expr.NumberOne, expr.NumberTwo);
-                case '-':
-                    return BaseCalculator.Subtraction(expr.NumberOne, expr.NumberTwo);
-                case '*':
-                    return BaseCalculator.Multiplication(expr.NumberOne, expr.NumberTwo);
-                case '/':
-                    return BaseCalculator.Division(expr.NumberOne, expr.NumberTwo);
-                default:
-                    return "Unknown expression";
+                return expression;
             }
+            else
+            {
+                switch (expr.TypeOperation)
+                {
+                    case '+':
+                        return BaseCalculator.Addition(expr.NumberOne, expr.NumberTwo);
+                    case '-':
+                        return BaseCalculator.Subtraction(expr.NumberOne, expr.NumberTwo);
+                    case '*':
+                        return BaseCalculator.Multiplication(expr.NumberOne, expr.NumberTwo);
+                    case '/':
+                        return BaseCalculator.Division(expr.NumberOne, expr.NumberTwo);
+                    default:
+                        return "Unknown expression";
+                }
+            }
+
         }
     }
 }
