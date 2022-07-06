@@ -16,8 +16,13 @@ namespace TestNetCalc.Service
             {
                 if (TypeOperation == '\0')
                 {
-                    if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/')
+                    if (expression[i] == '+' || expression[i] == '-' & NumberOne.Equals(""))
                     {
+                        NumberOne.Append(expression[i]);
+                    }
+                    else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/' & !NumberOne.Equals(""))
+                    {
+
                         TypeOperation = expression[i];
                     }
                     else
