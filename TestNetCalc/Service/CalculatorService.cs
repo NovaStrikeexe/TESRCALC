@@ -16,7 +16,7 @@ namespace TestNetCalc.Service
             {
                 if (TypeOperation == '\0')
                 {
-                    if (expression[i] == '+' || expression[i] == '-' & NumberOne.Equals(""))
+                    if (expression[i] == '-' & NumberOne.Equals(""))
                     {
                         NumberOne.Append(expression[i]);
                     }
@@ -43,17 +43,17 @@ namespace TestNetCalc.Service
                     TypeOperation = TypeOperation
                 });
         }
-        internal static MathExpression ConvertToExpressionType(string ExpressionJsonString)
+        public static MathExpression ConvertToExpressionType(string ExpressionJsonString)
         {
 #nullable enable
             MathExpression? expression = JsonSerializer.Deserialize<MathExpression>(ExpressionJsonString);
             return expression;
         }
-        internal static string ReturnResultOfExpession(string expression)
+        public static string ReturnResultOfExpession(string expression)
         {
             string exp = ExpresionToJson(expression);
             MathExpression expr = ConvertToExpressionType(exp);
-            var BaseCalculator = new BaseCalculator();
+            BaseCalculator? BaseCalculator = new BaseCalculator();
             if (expr.NumberTwo.Equals(""))
             {
                 return expression;

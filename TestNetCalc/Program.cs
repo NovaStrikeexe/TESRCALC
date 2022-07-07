@@ -25,8 +25,8 @@ namespace TestNetCalc
               webBuilder.UseStartup<Startup>();
               webBuilder.ConfigureKestrel(KestrelServerOptions =>
               {
-                  KestrelServerOptions.Limits.MaxConcurrentConnections = 100;
-                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 100;
+                  KestrelServerOptions.Limits.MaxConcurrentConnections = 2;
+                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 2;
               });
 
           });
