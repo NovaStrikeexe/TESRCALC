@@ -58,7 +58,7 @@ namespace TestNetCalc.Tests
         [Fact]
         public void ReturnResultOfExpessionDivisionUnknownExpressionTest()
         {
-            Assert.Equal("Unknown expression", CalculatorService.ReturnResultOfExpession("5-*6"));
+            Assert.Equal("Unknown expression", CalculatorService.ReturnResultOfExpession("Unknown expression"));
         }
 
     }

@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using TestNetCalc.Models;
 using TestNetCalc.Service;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace TestNetCalc.Controllers
 {
@@ -14,6 +15,7 @@ namespace TestNetCalc.Controllers
             return View(expressionString);
         }
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         public async Task<ActionResult> Calc(string expression)
         {
 
