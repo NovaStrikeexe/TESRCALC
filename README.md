@@ -14,7 +14,7 @@
 - [Installing](#installing)
 - [Running the tests](#tests)
 - [Usage](#usage)
-- [TODO](../TODO.md)
+- [TODO](#TODO)
 - [Authors](#authors)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
