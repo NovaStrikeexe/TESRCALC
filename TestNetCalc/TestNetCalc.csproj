@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreRateLimit" Version="4.0.2" />
     <PackageReference Include="AspNetCoreRateLimit.Redis" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />

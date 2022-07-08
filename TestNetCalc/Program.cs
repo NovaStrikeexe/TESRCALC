@@ -15,8 +15,8 @@ namespace TestNetCalc
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).ConfigureServices((context, services) =>
             {
-              services.Configure<KestrelServerOptions>(
-                  context.Configuration.GetSection("Kestrel"));
+                services.Configure<KestrelServerOptions>(
+                    context.Configuration.GetSection("Kestrel"));
             })
           .ConfigureWebHostDefaults(webBuilder =>
           {
@@ -25,10 +25,12 @@ namespace TestNetCalc
               webBuilder.UseStartup<Startup>();
               webBuilder.ConfigureKestrel(KestrelServerOptions =>
               {
-                  KestrelServerOptions.Limits.MaxConcurrentConnections = 11;
-                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 11;
+                  KestrelServerOptions.Limits.Http2.MaxStreamsPerConnection = 1;
+                  KestrelServerOptions.Limits.MaxConcurrentConnections = 1;
+                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 1;
               });
 
           });
+          
     }
 }

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.AspNetCore.Http;
 using AspNetCoreRateLimit;
 using TestNetCalc.Models;
 using TestNetCalc.Service;
@@ -19,8 +18,7 @@ namespace TestNetCalc
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
@@ -28,13 +26,14 @@ namespace TestNetCalc
             {
                 options.HttpStatusCode = 503;
             });
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
             services.AddMemoryCache();
             services.AddTransient<CalculatorService>();
             services.AddControllersWithViews();
             services.AddScoped<ExpressionString>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,7 +43,6 @@ namespace TestNetCalc
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

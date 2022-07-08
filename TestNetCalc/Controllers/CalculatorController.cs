@@ -9,6 +9,7 @@ namespace TestNetCalc.Controllers
 {
     public class CalculatorController : Controller
     {
+        [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         public IActionResult Calc()
         {
             ExpressionString expressionString = new ExpressionString();
