@@ -103,7 +103,7 @@ For exemple for vscode .NET Core Test Explorer
 
 This calculator is able to work with operations Addition Subtraction Multiplication and Division (But only with two numbers)
 <br>
-(Данный калькулятор работает с операциями Сложения Вычитания Умножения и Деления (Но только с двумя числами))
+(Данный калькулятор работает с операциями Сложения и Умножения (Но только с двумя числами))
 
 ## ✍️ TODO <a name = "TODO"></a>
 In the future, it is planned to refine the application for use with more complex expressions.
