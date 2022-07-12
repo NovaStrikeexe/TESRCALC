@@ -1,3 +1,4 @@
+using System;
 using TestNetCalc.Models;
 using TestNetCalc.Models.Implementation;
 
@@ -10,14 +11,18 @@ namespace TestNetCalc.Services
         {
             Addition addition = new Addition();
             Multiplication multiplication = new Multiplication();
+            if (mathExpression.NumberTwo == "")
+            {
+                return mathExpression.NumberOne + mathExpression.TypeOperation;
+            }
             try
             {
                 switch (mathExpression.TypeOperation)
                 {
                     case '+':
-                        return addition.Calculate(mathExpression.NumberOne, mathExpression.NumberTwo);
+                        return addition.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
                     case '*':
-                        return multiplication.Calculate(mathExpression.NumberOne, mathExpression.NumberTwo);
+                        return multiplication.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
                     default:
                         return "Unknown expression";
                 }

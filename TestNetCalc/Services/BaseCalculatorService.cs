@@ -5,7 +5,7 @@ namespace TestNetCalc.Services
     {
         public static string ReturnResultOfExpession(string expression)
         {
-            return AdditionMultiplicationCalcService.Execute(ExpresionToMathExpressionService.ExpresionToMathExpression(expression));
+            return AdditionMultiplicationCalcService.Execute(ConverterExpressionType.JsonToExpressionType(ExpresionToJsonService.ExpresionToJson(expression)));
         }
     }
 }
