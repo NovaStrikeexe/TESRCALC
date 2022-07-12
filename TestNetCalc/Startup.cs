@@ -6,7 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using AspNetCoreRateLimit;
 using TestNetCalc.Models;
-using TestNetCalc.Service;
+using TestNetCalc.Services;
+using TestNetCalc.Errors;
 
 namespace TestNetCalc
 {
@@ -22,6 +23,9 @@ namespace TestNetCalc
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
+            services.AddControllers(options =>
+            options.Filters.Add(new HttpResponseExceptionFilter())
+            );
             services.Configure<IpRateLimitOptions>(options =>
             {
                 options.HttpStatusCode = 503;
@@ -29,7 +33,7 @@ namespace TestNetCalc
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
             services.AddMemoryCache();
-            services.AddTransient<CalculatorService>();
+            services.AddTransient<AllOpCalculatorService>();
             services.AddControllersWithViews();
             services.AddScoped<ExpressionString>();
         }
@@ -38,12 +42,11 @@ namespace TestNetCalc
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error-local-development");
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseExceptionHandler("/error");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

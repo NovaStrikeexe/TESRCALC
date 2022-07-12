@@ -3,20 +3,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using TestNetCalc.Models;
-using TestNetCalc.Service;
+using TestNetCalc.Services;
+
 
 namespace TestNetCalc.Controllers
 {
     public class CalculatorController : Controller
     {
-        [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
+        
         public IActionResult Calc()
         {
             ExpressionString expressionString = new ExpressionString();
             return View(expressionString);
         }
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status503ServiceUnavailable)]
         public async Task<ActionResult> Calc(string expression)
         {
 
@@ -31,7 +31,7 @@ namespace TestNetCalc.Controllers
             {
                 try
                 {
-                    var expTask = Task.Run(() => CalculatorService.ReturnResultOfExpession(expressionString.StringExpression));
+                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(expressionString.StringExpression));
                     expressionString.StringExpression = await expTask;
                 }
                 catch (Exception)

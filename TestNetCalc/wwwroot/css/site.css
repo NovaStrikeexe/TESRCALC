@@ -53,6 +53,8 @@
 }
 
     .button.gray {
+        width: 45px;
+            height: 90px;
         color: black;
         font-color: black;
         background-color: #6f6f6f;
@@ -91,9 +93,9 @@
 
 .button.orange {
     color: black;
-    background-color: FF9933;
+    background-color: FFA500;
     border-bottom: black 2px solid;
-    border-top: 2px FF9933 solid;
+    border-top: 2px FFA500 solid;
 }
 
 .gray:active {

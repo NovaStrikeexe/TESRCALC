@@ -1,5 +1,4 @@
 ﻿
-
 namespace TestNetCalc.Models
 {
     public abstract class AbsractBaseCalculator<T>
