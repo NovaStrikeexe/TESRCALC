@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using AspNetCoreRateLimit;
 using TestNetCalc.Models;
 using TestNetCalc.Services;
 using TestNetCalc.Errors;
@@ -18,11 +17,9 @@ namespace TestNetCalc
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
-            services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
             services.AddMemoryCache();
             services.AddTransient<AllOpCalculatorService>();
             services.AddControllersWithViews();
@@ -31,19 +28,10 @@ namespace TestNetCalc
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseExceptionHandler("/error-local-development");
-            }
-            else
-            {
-                app.UseExceptionHandler("/error");
-            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
+            //app.UseStaticFiles();
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

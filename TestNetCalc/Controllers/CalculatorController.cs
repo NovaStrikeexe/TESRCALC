@@ -10,37 +10,38 @@ namespace TestNetCalc.Controllers
 {
     public class CalculatorController : Controller
     {
-        
+
         public IActionResult Calc()
         {
-            ExpressionString expressionString = new ExpressionString();
-            return View(expressionString);
+            MathExpression mathExpression = new MathExpression();
+            return View(mathExpression);
         }
         [HttpPost]
-        public async Task<ActionResult> Calc(string expression)
+        public async Task<ActionResult> Calc(MathExpression mathExpression)
         {
 
-            ExpressionString expressionString = new ExpressionString();
-            expressionString.StringExpression = Request.Form["ExpressionStr"];
+            mathExpression.NumberOne = Request.Form["NumberOne"];
+            mathExpression.NumberTwo = Request.Form["NumberTwo"];
+            mathExpression.TypeOperation = Request.Form["TypeOperation"];
 
-            if (expressionString.StringExpression == "" || expressionString.StringExpression == "0")
+            if (mathExpression.NumberOne == "" || mathExpression.NumberTwo == "" || mathExpression.TypeOperation == "")
             {
-                return View(expressionString);
+                return View(mathExpression);
             }
             else
             {
                 try
                 {
-                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(expressionString.StringExpression));
-                    expressionString.StringExpression = await expTask;
+                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathExpression));
+                    mathExpression.ResultOfMathExpression = await expTask;
                 }
                 catch (Exception)
                 {
-                    expressionString.StringExpression = "Unexpected expression";
+                    mathExpression.ResultOfMathExpression = "Unexpected expression";
                 }
             }
 
-            return View(expressionString);
+            return View(mathExpression);
         }
 
     }

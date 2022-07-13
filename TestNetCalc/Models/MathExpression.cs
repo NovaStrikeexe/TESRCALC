@@ -5,6 +5,7 @@ namespace TestNetCalc.Models
     {
         public string NumberOne { get; set; }
         public string NumberTwo { get; set; }
-        public char TypeOperation { get; set; }
+        public string TypeOperation { get; set; }
+        public string ResultOfMathExpression { get; set; }
     }
 }

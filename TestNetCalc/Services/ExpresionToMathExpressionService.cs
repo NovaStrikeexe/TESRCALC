@@ -40,7 +40,7 @@ namespace TestNetCalc.Services
             {
                 NumberOne = numberOne.ToString(),
                 NumberTwo = numberTwo.ToString(),
-                TypeOperation = TypeOperation
+                TypeOperation = TypeOperation.ToString()
             };
         }
     }

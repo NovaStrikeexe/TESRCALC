@@ -1,4 +1,4 @@
-﻿@model TestNetCalc.Models.ExpressionString
+﻿@model TestNetCalc.Models.MathExpression
 @{
     ViewData["Title"] = "Calculator";
 }
@@ -13,44 +13,42 @@
     <div class="box">
         <form action="Calc" method="post">
             <div class="display">
-                <input id="ExpressionStr" name="ExpressionStr" type="text" readonly="readonly" value="@Model.StringExpression" runat="server">
+                <p><input id="NumberOne" name="NumberOne" type="text" value="@Model.NumberOne" runat="server">
+                    <input id="NumberTwo" name="NumberTwo" type="text" value="@Model.NumberTwo" runat="server">
+                    <input id="TypeOperation" name="TypeOperation" type="text" readonly="readonly"
+                        value="@Model.TypeOperation" runat="server">
+                    <input id="ResultOfMathExpression" name="ResultOfMathExpression" type="text" readonly="readonly"
+                        value="@Model.ResultOfMathExpression" runat="server">
+                </p>
+
             </div>
             <div class="keys">
                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <p>
-                    <input type="button" class="button black" value="7" onclick='v("7")'>
-                    <input type="button" class="button black" value="8" onclick='v("8")'>
-                    <input type="button" class="button black" value="9" onclick='v("9")'>
-                </p>
-                <p>
-                    <input type="button" class="button black" value="4" onclick='v("4")'>
-                    <input type="button" class="button black" value="5" onclick='v("5")'>
-                    <input type="button" class="button black" value="6" onclick='v("6")'>
-                    <input type="button" class="button pink" value="+" onclick='v("+")'>
-                </p>
-                <p>
-                    <input type="button" class="button black" value="1" onclick='v("1")'>
-                    <input type="button" class="button black" value="2" onclick='v("2")'>
-                    <input type="button" class="button black" value="3" onclick='v("3")'>
-                    <input type="button" class="button pink" value="*" onclick='v("*")'>
-                </p>
-                <p>
-                    <input type="button" class="button black" value="0" onclick='v("0")'>
-                    <input type="button" class="button black" value="." onclick='v(".")'>
+                    <input type="button" class="button pink" value="+" onclick='CLS_OPR("+")'>
+                    <input type="button" class="button pink" value="*" onclick='CLS_OPR("*")'>
                     <input type="button" class="button black" value="CLS" onclick='cls("")'>
-                <input type="submit" class="button orange" value="=" asp-controller="Calculator" asp-action="Calc">
+                    <input type="submit" class="button orange" value="=" asp-controller="Calculator" asp-action="Calc">
             </div>
         </form>
-       
+
     </div>
 </body>
 
 
 <script>
     function cls(val) {
-        document.getElementById("ExpressionStr").value = val;
+        document.getElementById("NumberOne").value = val;
+        document.getElementById("NumberTwo").value = val;
+        document.getElementById("TypeOperation").value = val;
     }
-    function v(val) {
-        document.getElementById("ExpressionStr").value += val;
+    function CLS_OPR(val) {
+        document.getElementById("TypeOperation").value = val;
     }
 </script>

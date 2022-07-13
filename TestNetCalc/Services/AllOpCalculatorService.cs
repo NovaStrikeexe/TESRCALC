@@ -20,13 +20,13 @@ namespace TestNetCalc.Services
                 }
                 switch (mathExpression.TypeOperation)
                 {
-                    case '+':
+                    case "+":
                         return addition.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
-                    case '-':
+                    case "-":
                         return subtraction.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
-                    case '*':
+                    case "*":
                         return multiplication.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
-                    case '/':
+                    case "/":
                         return division.Calculate(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
                     default:
                         return "Unknown expression";
