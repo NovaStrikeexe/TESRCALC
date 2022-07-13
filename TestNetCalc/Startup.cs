@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using AspNetCoreRateLimit;
 using TestNetCalc.Models;
@@ -22,14 +21,6 @@ namespace TestNetCalc
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<KestrelServerOptions>(Configuration.GetSection("Kestrel"));
-            services.AddControllers(options =>
-            options.Filters.Add(new HttpResponseExceptionFilter())
-            );
-            services.Configure<IpRateLimitOptions>(options =>
-            {
-                options.HttpStatusCode = 503;
-            });
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitCounterStore,MemoryCacheRateLimitCounterStore>();
             services.AddMemoryCache();
