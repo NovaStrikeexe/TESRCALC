@@ -38,8 +38,8 @@ namespace TestNetCalcWebApi.Services
             }
             return new MathExpression
             {
-                NumberOne = numberOne.ToString(),
-                NumberTwo = numberTwo.ToString(),
+                NumberOne = Convert.ToDouble(numberOne),
+                NumberTwo = Convert.ToDouble(numberTwo),
                 TypeOperation = TypeOperation
             };
         }

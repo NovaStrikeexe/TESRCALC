@@ -11,29 +11,30 @@ namespace TestNetCalcWebApi.Controllers
     [Route("[controller]")]
     public class CalculatorController : ControllerBase
     {
-        // GET: api/<TestNetCalcWebApiController>
-        [HttpGet]
-        public async Task<ActionResult<String>> Calc(string expression)
+        // Post: api/<TestNetCalcWebApiController>
+        [HttpPost]
+        public async Task<ActionResult<MathExpression>> Calc(MathExpression mathExpression)
         {
-
-            ExpressionString expressionString = new ExpressionString();
-            if (expressionString.StringExpression == "" || expressionString.StringExpression == "0")
+            ResultOfMathExpression resultOfMathExpression = new ResultOfMathExpression();
+            if (mathExpression.NumberOne.ToString() == "" || mathExpression.NumberTwo.ToString() == "" || mathExpression.TypeOperation.ToString() == "")
             {
-                return expressionString.StringExpression;
+                return mathExpression;
             }
             else
             {
                 try
                 {
-                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(expression));
-                    expressionString.StringExpression = await expTask;
+                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathExpression));
+                    resultOfMathExpression.value = await expTask;
                 }
                 catch (Exception)
                 {
-                    expressionString.StringExpression = "Unexpected expression";
+                    resultOfMathExpression.value = mathExpression.NumberOne;
                 }
             }
-            return expressionString.StringExpression;
+            mathExpression.NumberOne = resultOfMathExpression.value;
+            mathExpression.NumberTwo = 0;
+            return mathExpression;
         }
     }
 }

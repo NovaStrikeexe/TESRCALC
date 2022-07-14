@@ -6,7 +6,7 @@ namespace TestNetCalcWebApi.Services
 {
     public class AllOpCalculatorService
     {
-        public string Execute(MathExpression mathExpression)
+        public double Execute(MathExpression mathExpression)
         {
             Addition addition = new Addition();
             Division division = new Division();
@@ -14,27 +14,27 @@ namespace TestNetCalcWebApi.Services
             Subtraction subtraction = new Subtraction();
             try
             {
-                if (mathExpression.NumberTwo == "")
+                if (mathExpression.NumberTwo.ToString() == "")
                 {
-                    return mathExpression.NumberOne + mathExpression.TypeOperation;
+                    return mathExpression.NumberOne;
                 }
                 switch (mathExpression.TypeOperation)
                 {
                     case '+':
-                        return addition.CalculateResult(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
+                        return addition.CalculateResult(mathExpression.NumberOne, mathExpression.NumberTwo);
                     case '-':
-                        return subtraction.CalculateResult(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
+                        return subtraction.CalculateResult(mathExpression.NumberOne, mathExpression.NumberTwo);
                     case '*':
-                        return multiplication.CalculateResult(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
+                        return multiplication.CalculateResult(mathExpression.NumberOne, mathExpression.NumberTwo);
                     case '/':
-                        return division.CalculateResult(Convert.ToDouble(mathExpression.NumberOne), Convert.ToDouble(mathExpression.NumberTwo));
+                        return division.CalculateResult(mathExpression.NumberOne, mathExpression.NumberTwo);
                     default:
-                        return "Unknown expression";
+                        return mathExpression.NumberOne;
                 }
             }
             catch (System.Exception)
             {
-                return "System Error";
+                return mathExpression.NumberOne;
             }
         }
     }

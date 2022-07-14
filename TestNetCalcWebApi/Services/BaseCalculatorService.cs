@@ -3,9 +3,9 @@ namespace TestNetCalcWebApi.Services
 {
     public class BaseCalculatorService 
     {
-        public static string ReturnResultOfExpession(string expression)
+        public static double ReturnResultOfExpession(MathExpression mathExpression)
         {
-            return AdditionMultiplicationCalcService.Execute(ConverterExpressionType.JsonToExpressionType(ExpresionToJsonService.ExpresionToJson(expression)));
+            return AdditionMultiplicationCalcService.Execute(mathExpression);
         }
     }
 }

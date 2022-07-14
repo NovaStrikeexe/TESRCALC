@@ -14,11 +14,24 @@ namespace TestNetCalcWebApi
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            Host.CreateDefaultBuilder(args).ConfigureServices((context, services) =>
+            {
+                services.Configure<KestrelServerOptions>(
+                    context.Configuration.GetSection("Kestrel"));
+            })
+          .ConfigureWebHostDefaults(webBuilder =>
+          {
+              webBuilder.UseKestrel();
+              webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
+              webBuilder.UseStartup<Startup>();
+              webBuilder.ConfigureKestrel(KestrelServerOptions =>
+              {
+                  KestrelServerOptions.Limits.Http2.MaxStreamsPerConnection = 10;
+                  KestrelServerOptions.Limits.MaxConcurrentConnections = 10;
+                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 10;
+              });
+
+          });
     }
     /*public class Program
     {

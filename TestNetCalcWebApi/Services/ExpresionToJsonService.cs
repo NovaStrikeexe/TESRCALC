@@ -39,8 +39,8 @@ namespace TestNetCalcWebApi.Services
             return JsonSerializer.Serialize<MathExpression>(
                 new MathExpression
                 {
-                    NumberOne = numberOne.ToString(),
-                    NumberTwo = numberTwo.ToString(),
+                    NumberOne = Convert.ToDouble(numberOne),
+                    NumberTwo = Convert.ToDouble(numberTwo),
                     TypeOperation = TypeOperation
                 });
         }
