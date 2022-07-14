@@ -38,9 +38,9 @@ namespace TestNetCalc.Services
             }
             return new MathExpression
             {
-                NumberOne = numberOne.ToString(),
-                NumberTwo = numberTwo.ToString(),
-                TypeOperation = TypeOperation.ToString()
+                NumberOne = Convert.ToDouble(numberOne),
+                NumberTwo = Convert.ToDouble(numberTwo),
+                TypeOperation = TypeOperation
             };
         }
     }

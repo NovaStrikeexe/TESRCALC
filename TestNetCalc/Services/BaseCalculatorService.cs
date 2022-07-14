@@ -1,9 +1,9 @@
 ﻿using TestNetCalc.Models;
 namespace TestNetCalc.Services
 {
-    public class BaseCalculatorService 
+    public class BaseCalculatorService
     {
-        public static string ReturnResultOfExpession(MathExpression mathExpression)
+        public static double ReturnResultOfExpession(MathExpression mathExpression)
         {
             return AdditionMultiplicationCalcService.Execute(mathExpression);
         }

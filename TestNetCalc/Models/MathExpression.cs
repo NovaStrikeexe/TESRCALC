@@ -3,9 +3,8 @@ namespace TestNetCalc.Models
 {
     public class MathExpression
     {
-        public string NumberOne { get; set; }
-        public string NumberTwo { get; set; }
-        public string TypeOperation { get; set; }
-        public string ResultOfMathExpression { get; set; }
+        public double NumberOne { get; set; }
+        public double NumberTwo { get; set; }
+        public char TypeOperation { get; set; }
     }
 }

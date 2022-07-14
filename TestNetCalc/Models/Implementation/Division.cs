@@ -4,16 +4,17 @@ namespace TestNetCalc.Models.Implementation
 {
     public class Division : MathOpertion
     {
-        public string Calculate(double a, double b)
+        public double CalculateResult(double a, double b)
         {
             try
             {
-                return Convert.ToString(a / b);
+                return a / b;
             }
             catch (DivideByZeroException)
             {
-                return "Div by zero";
+                return 99999999999.0;
             }
+
         }
     }
 }
