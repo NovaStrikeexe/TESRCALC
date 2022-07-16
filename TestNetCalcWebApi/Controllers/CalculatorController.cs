@@ -8,17 +8,19 @@ namespace TestNetCalcWebApi.Controllers
 {
     
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CalculatorController : ControllerBase
     {
         // Post: api/<TestNetCalcWebApiController>
         [HttpPost]
-        public async Task<ActionResult<MathExpression>> Calc(MathExpression mathExpression)
+        [Route("calc")]
+        public async Task<ActionResult<ResultOfMathExpression>> Calc(MathExpression mathExpression)
         {
             ResultOfMathExpression resultOfMathExpression = new ResultOfMathExpression();
             if (mathExpression.NumberOne.ToString() == "" || mathExpression.NumberTwo.ToString() == "" || mathExpression.TypeOperation.ToString() == "")
             {
-                return mathExpression;
+                resultOfMathExpression.value = 0;
+                return resultOfMathExpression;
             }
             else
             {
@@ -32,9 +34,7 @@ namespace TestNetCalcWebApi.Controllers
                     resultOfMathExpression.value = mathExpression.NumberOne;
                 }
             }
-            mathExpression.NumberOne = resultOfMathExpression.value;
-            mathExpression.NumberTwo = 0;
-            return mathExpression;
+            return resultOfMathExpression;
         }
     }
 }

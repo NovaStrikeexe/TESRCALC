@@ -11,8 +11,8 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "Calculator",
+      "launchBrowser": false,
+      "launchUrl": "api/Calculator/calc",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +20,8 @@
     "TestNetCalcWebApi": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
-      "launchBrowser": true,
-      "launchUrl": "Calculator",
+      "launchBrowser": false,
+      "launchUrl": "api/Calculator/calc",
       "applicationUrl": "https://localhost:5011;http://localhost:5010",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
