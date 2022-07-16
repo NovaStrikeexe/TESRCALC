@@ -7,6 +7,6 @@ namespace TestNetCalc.Models
 {
     public interface MathOpertion
     {
-        string Calculate(double a, double b);
+        double CalculateResult(double a, double b);
     }
 }

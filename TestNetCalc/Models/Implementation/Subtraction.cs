@@ -4,9 +4,9 @@ namespace TestNetCalc.Models.Implementation
 {
     public class Subtraction : MathOpertion
     {
-        public string Calculate(double a, double b)
+        public double CalculateResult(double a, double b)
         {
-            return Convert.ToString(a - b);
+            return a - b;
         }
     }
 }

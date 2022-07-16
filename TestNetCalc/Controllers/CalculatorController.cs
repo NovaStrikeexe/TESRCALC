@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using TestNetCalc.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using TestNetCalc.Models;
+using System;
+using System.Threading.Tasks;
 using TestNetCalc.Services;
 
 
@@ -17,14 +16,10 @@ namespace TestNetCalc.Controllers
             return View(mathExpression);
         }
         [HttpPost]
-        public async Task<ActionResult> Calc(MathExpression mathExpression)
+        public async Task<ActionResult<MathExpression>> Calc(MathExpression mathExpression)
         {
-
-            mathExpression.NumberOne = Request.Form["NumberOne"];
-            mathExpression.NumberTwo = Request.Form["NumberTwo"];
-            mathExpression.TypeOperation = Request.Form["TypeOperation"];
-
-            if (mathExpression.NumberOne == "" || mathExpression.NumberTwo == "" || mathExpression.TypeOperation == "")
+            ResultOfMathExpression resultOfMathExpression = new ResultOfMathExpression();
+            if (mathExpression.NumberOne.ToString() == "" || mathExpression.NumberTwo.ToString() == "" || mathExpression.TypeOperation.ToString() == "")
             {
                 return View(mathExpression);
             }
@@ -33,16 +28,17 @@ namespace TestNetCalc.Controllers
                 try
                 {
                     var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathExpression));
-                    mathExpression.ResultOfMathExpression = await expTask;
+                    resultOfMathExpression.value = await expTask;
                 }
                 catch (Exception)
                 {
-                    mathExpression.ResultOfMathExpression = "Unexpected expression";
+                    resultOfMathExpression.value = mathExpression.NumberOne;
                 }
             }
-
+            mathExpression.NumberOne = resultOfMathExpression.value;
+            mathExpression.NumberTwo = 0;
             return View(mathExpression);
-        }
 
+        }
     }
 }
