@@ -12,32 +12,38 @@ namespace TestNetCalc.Controllers
 
         public IActionResult Calc()
         {
-            MathExpression mathExpression = new MathExpression();
-            return View(mathExpression);
+            MathOPAndResult mathOPAndResult = new MathOPAndResult();
+            mathOPAndResult.MathExpression = new MathExpression();
+            mathOPAndResult.ResultOfMathExpression = new ResultOfMathExpression();
+            return View(mathOPAndResult);
         }
         [HttpPost]
-        public async Task<ActionResult<MathExpression>> Calc(MathExpression mathExpression)
+        public async Task<ActionResult<MathOPAndResult>> Calc(MathOPAndResult mathOPAndResult)
         {
-            ResultOfMathExpression resultOfMathExpression = new ResultOfMathExpression();
-            if (mathExpression.NumberOne.ToString() == "" || mathExpression.NumberTwo.ToString() == "" || mathExpression.TypeOperation.ToString() == "")
+            mathOPAndResult.MathExpression = new MathExpression();
+            mathOPAndResult.ResultOfMathExpression = new ResultOfMathExpression();
+            mathOPAndResult.MathExpression.NumberOne = Convert.ToDouble(Request.Form["NumberOne"]);
+            mathOPAndResult.MathExpression.NumberTwo = Convert.ToDouble(Request.Form["NumberTwo"]);
+            mathOPAndResult.MathExpression.TypeOperation = Convert.ToChar(Request.Form["TypeOperation"]);
+            mathOPAndResult.ResultOfMathExpression.value = 0;
+
+            if (mathOPAndResult.MathExpression.NumberOne.ToString() == "" || mathOPAndResult.MathExpression.NumberTwo.ToString() == "" || mathOPAndResult.MathExpression.TypeOperation.ToString() == "")
             {
-                return View(mathExpression);
+                return View(mathOPAndResult);
             }
             else
             {
                 try
                 {
-                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathExpression));
-                    resultOfMathExpression.value = await expTask;
+                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathOPAndResult.MathExpression));
+                    mathOPAndResult.ResultOfMathExpression.value = await expTask;
                 }
                 catch (Exception)
                 {
-                    resultOfMathExpression.value = mathExpression.NumberOne;
+                    mathOPAndResult.ResultOfMathExpression.value = mathOPAndResult.MathExpression.NumberOne;
                 }
             }
-            mathExpression.NumberOne = resultOfMathExpression.value;
-            mathExpression.NumberTwo = 0;
-            return View(mathExpression);
+            return View(mathOPAndResult);
 
         }
     }

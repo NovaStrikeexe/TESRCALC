@@ -1,8 +1,7 @@
-﻿@model TestNetCalc.Models.MathExpression
+﻿@model TestNetCalc.Models.MathOPAndResult
 @{
     ViewData["Title"] = "Calculator";
 }
-
 
 <div class="text-center">
     <h1 class="display-4">TEST NET CALC</h1>
@@ -13,10 +12,22 @@
     <div class="box">
         <form action="Calc" method="post">
             <div class="display">
-                <p><input id="NumberOne" name="NumberOne" type="text" value="@Model.NumberOne" runat="server">
-                    <input id="NumberTwo" name="NumberTwo" type="text" value="@Model.NumberTwo" runat="server">
+                <p>
+                    <input id="NumberOne" name="NumberOne" type="text" value="@Model.MathExpression.NumberOne" runat="server">
+                    <br>
+                    <br>
+                    <br>
+                    <input id="NumberTwo" name="NumberTwo" type="text" value="@Model.MathExpression.NumberTwo" runat="server">
+                    <br>
+                    <br>
+                    <br>
                     <input id="TypeOperation" name="TypeOperation" type="text" readonly="readonly"
-                        value="@Model.TypeOperation" runat="server">
+                        value="@Model.MathExpression.TypeOperation" runat="server">
+                    <br>
+                    <br>
+                    <br>
+                    <input id="value" name="value" type="text" readonly="readonly"
+                        value="@Model.ResultOfMathExpression.value" runat="server">
                 </p>
 
             </div>
@@ -45,6 +56,7 @@
         document.getElementById("NumberOne").value = val;
         document.getElementById("NumberTwo").value = val;
         document.getElementById("TypeOperation").value = val;
+        document.getElementById("value").value = val;
     }
     function CLS_OPR(val) {
         document.getElementById("TypeOperation").value = val;

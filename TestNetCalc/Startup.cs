@@ -39,7 +39,7 @@ namespace TestNetCalc
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Calculator}/{action=Calc}/{id?}");
+                    pattern: "{controller=Calculator}/{action=Calc}/");
             });
         }
     }
