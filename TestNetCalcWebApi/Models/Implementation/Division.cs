@@ -6,15 +6,7 @@ namespace TestNetCalcWebApi.Models.Implementation
     {
         public double CalculateResult(double a, double b)
         {
-            try
-            {
-               return a / b;
-            }
-            catch (DivideByZeroException)
-            {
-                return 99999999999.0;
-            }
-
+            return a / b;
         }
     }
 }

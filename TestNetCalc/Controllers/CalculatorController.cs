@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TestNetCalc.Models;
-using TestNetCalc.Helpers;
 using Newtonsoft.Json.Linq;
 
 
@@ -14,7 +13,6 @@ namespace TestNetCalc.Controllers
 {
     public class CalculatorController : Controller
     {
-        MathOpertionAPI _api = new MathOpertionAPI();
 
         public IActionResult Calc()
         {
