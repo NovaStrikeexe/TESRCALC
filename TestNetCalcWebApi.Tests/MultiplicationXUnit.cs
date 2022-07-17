@@ -17,6 +17,7 @@ namespace TestNetCalcWebApi.Tests
             Multiplication multiplication = new Multiplication();
             Assert.Equal(60, multiplication.CalculateResult(-15, -4));
         }
+        [Fact]
         public void MultiplicationMixedPass()
         {
             Multiplication multiplication = new Multiplication();
