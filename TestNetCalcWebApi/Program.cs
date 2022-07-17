@@ -26,9 +26,9 @@ namespace TestNetCalcWebApi
               webBuilder.UseStartup<Startup>();
               webBuilder.ConfigureKestrel(KestrelServerOptions =>
               {
-                  KestrelServerOptions.Limits.Http2.MaxStreamsPerConnection = 10;
-                  KestrelServerOptions.Limits.MaxConcurrentConnections = 10;
-                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 10;
+                  KestrelServerOptions.Limits.Http2.MaxStreamsPerConnection = 3;
+                  KestrelServerOptions.Limits.MaxConcurrentConnections = 3;
+                  KestrelServerOptions.Limits.MaxConcurrentUpgradedConnections = 3;
               });
 
           });

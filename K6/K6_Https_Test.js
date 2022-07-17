@@ -1,5 +1,5 @@
 import http from 'k6/http';
-const url = 'https://localhost:5001';
+const url = 'https://localhost:5011/api/Calculator';
 
 export let options = {
     stages: [

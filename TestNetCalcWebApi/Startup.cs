@@ -25,7 +25,8 @@ namespace TestNetCalcWebApi
         {
 
             services.AddControllers(options => options.Filters.Add(new HttpResponseExceptionFilter()));
-            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +34,11 @@ namespace TestNetCalcWebApi
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error-local-development");
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseHttpsRedirection();
