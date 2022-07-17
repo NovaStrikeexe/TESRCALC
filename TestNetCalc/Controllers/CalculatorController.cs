@@ -1,14 +1,20 @@
-﻿using TestNetCalc.Models;
+﻿using System.Net.Http;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using TestNetCalc.Services;
+using TestNetCalc.Models;
+using TestNetCalc.Helpers;
+using Newtonsoft.Json.Linq;
 
 
 namespace TestNetCalc.Controllers
 {
     public class CalculatorController : Controller
     {
+        MathOpertionAPI _api = new MathOpertionAPI();
 
         public IActionResult Calc()
         {
@@ -33,14 +39,21 @@ namespace TestNetCalc.Controllers
             }
             else
             {
-                try
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://localhost:5010");
+                var json = JsonSerializer.Serialize<MathExpression>(new MathExpression
                 {
-                    var expTask = Task.Run(() => BaseCalculatorService.ReturnResultOfExpession(mathOPAndResult.MathExpression));
-                    mathOPAndResult.ResultOfMathExpression.value = await expTask;
-                }
-                catch (Exception)
+                    NumberOne = mathOPAndResult.MathExpression.NumberOne,
+                    NumberTwo = mathOPAndResult.MathExpression.NumberTwo,
+                    TypeOperation = mathOPAndResult.MathExpression.TypeOperation
+                });
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage httpResponseMessage = await client.PostAsync("api/Calculator/calc", data);
+                if (Response.StatusCode == Convert.ToInt64(HttpStatusCode.OK))
                 {
-                    mathOPAndResult.ResultOfMathExpression.value = mathOPAndResult.MathExpression.NumberOne;
+                    var res = await httpResponseMessage.Content.ReadAsStringAsync();
+                    dynamic resV2 = JObject.Parse(res);
+                    mathOPAndResult.ResultOfMathExpression.value = resV2.value;
                 }
             }
             return View(mathOPAndResult);
