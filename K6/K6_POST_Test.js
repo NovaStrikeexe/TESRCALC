@@ -1,5 +1,10 @@
 import http from 'k6/http';
 
+export const options = {
+    vus: 1,
+    duration: '5s'
+
+}
 export default function () {
     const url = 'https://localhost:5011/api/Calculator';
     const payload = JSON.stringify({

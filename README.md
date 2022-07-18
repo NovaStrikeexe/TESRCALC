@@ -36,6 +36,8 @@ Microsoft.NET.Test.Sdk --version 17.2.0 https://www.nuget.org/packages/Microsoft
 Xunit https://xunit.net/docs/getting-started/netcore/cmdline
 
 K6 https://k6.io/docs/getting-started/installation/
+
+
 ```
 
 ### Installing <a name = "installing"></a>
@@ -45,7 +47,7 @@ To install this project on your local device, you need to download a copy from t
 ```
 https://github.com/NovaStrikeexe/TESRCALC
 ```
-Once in the directory of this reposition, before launching the application, you must open the ../TESRCALC/TestNetCalc directory and execute in the terminal command: "dotnet build" in it to build the project. <br>To run the project you need to run in the terminal command "dotnet run"
+Once in the directory of this reposition, before launching the application, you must open the ../TESRCALC/TestNetCalc directory and execute in the terminal command: "dotnet build" in it to build the web service project, then open the  ../TESRCALC/TestNetCalcWebApi directory and execute in the terminal command: "dotnet build" in it to build the web api project . <br>To run the project you need to run in the terminal command "dotnet run" first to web api then to web service
 In the terminal, you should see the following lines:
 ```
 info: Microsoft.Hosting.Lifetime[0]
@@ -59,10 +61,22 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: ../TESRCALC/TestNetCalc
 ```
+```
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: http://localhost:5011
+info: Microsoft.Hosting.Lifetime[0]
+      Now listening on: https://localhost:5010
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: ../TESRCALC/TestNetCalcWebApi
+```
 Their appearance will mean that the project is launched
 <br>
 
-(Оказавшись в каталоге этого репозитория, перед запуском приложения необходимо открыть каталог ../TESRCALC/TestNetCalc и выполнить в терминале команду: "dotnet build" для сборки проекта. <br>Для запуска проекта нужно запустить в терминале команду "dotnet run"
+(Оказавшись в каталоге этого репозитория, перед запуском приложения необходимо открыть каталог ../TESRCALC/TestNetCalc и выполнить в терминале команду: «dotnet build» для сборки проекта веб-сервиса, затем открыть каталог ../TESRCALC/TestNetCalcWebApi и выполните в терминале команду: «dotnet build» для сборки проекта веб-API. <br>Чтобы запустить проект, вам нужно запустить в терминале команду "dotnet run" сначала для веб-API, а затем для веб-службы.
 
 В терминале вы должны увидеть следующие строки:
 ```
@@ -80,9 +94,9 @@ Load and Unit
 The load test is carried out using the K6 framework The test itself is located in the K6 directory and to run it, you must use the command:
 
 ```
-k6 run K6_Https_Test.js
+k6 run K6_POST_Test.js
 ```
-Unit tests are located in the TestNetCalc.Tests directory to run them you need to use xunit.runner.visualstudio as well as a extention for your IDE for Xunit tests
+Unit tests are located in the TestNetCalcWebApi.Tests directory to run them you need to use xunit.runner.visualstudio as well as a extention for your IDE for Xunit tests
 
 For exemple for vscode .NET Core Test Explorer
 
@@ -95,7 +109,7 @@ For exemple for vscode .NET Core Test Explorer
 ```
 СМ. листинг выше
 ```
-Модульные тесты расположены в каталоге TestNetCalc.Tests, для их запуска вам необходимо использовать xunit.runner.visualstudio, а также расширение для вашей IDE для тестов Xunit.
+Модульные тесты расположены в каталоге TestNetCalcWebApi.Tests, для их запуска вам необходимо использовать xunit.runner.visualstudio, а также расширение для вашей IDE для тестов Xunit.
 
 Например, для vscode .NET Core Test Explorer)
 
@@ -110,5 +124,5 @@ In the future, it is planned to refine the application for use with more complex
 <br>
 (В дальнейшем планируется доработать приложение для использования с более сложными выражениями.)
 ## Author <a name = "author"></a>
-[@NovaStrikeexe](https://github.com/NovaStrikeexe) - Initial work
+[@NovaStrikeexe](https://github.com/NovaStrikeexe) - Creator
 

@@ -11,6 +11,9 @@ using Newtonsoft.Json.Linq;
 
 namespace TestNetCalc.Controllers
 {
+    /**
+    * CalculatorController - контроллер отвечающий за обработку события расчета результата математической операции и связь с WEBAPI
+    */
     public class CalculatorController : Controller
     {
 

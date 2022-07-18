@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 namespace TestNetCalcWebApi.Errors
 {
+    /**
+    * HttpResponseExceptionFilter  - класс выполняющий роль фильтра для HttpResponseException
+    */
     public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order { get; } = int.MaxValue - 10;

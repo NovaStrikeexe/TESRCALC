@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace TestNetCalcWebApi.Controllers
 {
+    /**
+    * ErrorController - контроллер отвечающий за обработку ошибок Http и вывода информации по ней
+    */
     [ApiController]
     public class ErrorController : ControllerBase
     {

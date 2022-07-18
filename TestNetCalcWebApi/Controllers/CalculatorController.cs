@@ -6,7 +6,10 @@ using TestNetCalcWebApi.Services;
 
 namespace TestNetCalcWebApi.Controllers
 {
-    
+    /**
+    * CalculatorController - контроллер отвечающий за получения результата математической операции
+    */
+
     [ApiController]
     [Route("api/[controller]")]
     public class CalculatorController : ControllerBase

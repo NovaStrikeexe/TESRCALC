@@ -1,123 +1,71 @@
-﻿body {
-    background-color: tan;
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
 }
 
-.box {
-    background-color: #3d4543;
-    height: 300px;
-    width: 270px;
-    border-radius: 10px;
-    position: relative;
-    top: 80px;
-    left: 40%;
-}
-@font-face {
-    font-family: 'DIGITALDREAM';
-    src: url('file:///C:\Users\phant\source\repos\TestNetCalc\TestNetCalc\wwwroot\css\DIGITALDREAM.ttf') format('truetype');
-}
-.display {
-    background-color: #222;
-    width: 250px;
-    position: relative;
-    left: 15px;
-    top: 20px;
-    height:40px;
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
 }
 
-    .display input {
-        position: relative;
-        left: 2px;
-        top: 2px;
-        height: 35px;
-        color: black;
-        background-color: #bccd95;
-        font-size: 21px;
-        font-family:inherit;
-        text-align: right;
-    }
-
-.keys {
-    position: relative;
-    top: 15px;
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
-.button {
-    position:sticky;
-    width: 45px;
-    height: 30px;
-    border: none;
-    border-radius: 8px;
-    margin-left: 17px;
-    cursor: pointer;
-    border-top: 2px solid transparent;
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
 
-    .button.gray {
-        width: 45px;
-            height: 90px;
-        color: black;
-        font-color: black;
-        background-color: #6f6f6f;
-        border-bottom: black 2px solid;
-        border-top: 2px #6f6f6f solid;
-    }
-
-.title:hover {
-    color: #fff;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }
 
-.title {
-    margin-bottom: 10px;
-    margin-top: 30px;
-    padding: 5px 0;
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
-    color: black;
-    font-family: 'Cookie', cursive;
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
 }
 
-.button.pink {
-    color: black;
-    background-color: #ff4561;
-    border-bottom: black 2px solid;
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-.button.black {
-    color: black;
-    background-color: 303030;
-    border-bottom: black 2px solid;
-    border-top: 2px 303030 solid;
-    font-weight: bold;
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
 }
 
-.button.orange {
-    color: black;
-    background-color: FFA500;
-    border-bottom: black 2px solid;
-    border-top: 2px FFA500 solid;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
 }
 
-.gray:active {
-    border-top: black 2px solid;
-    border-bottom: 2px #6f6f6f solid;
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
-
-.pink:active {
-    border-top: black 2px solid;
-    border-bottom: #ff4561 2px solid;
-}
-
-.black:active {
-    border-top: black 2px solid;
-    border-bottom: #303030 2px solid;
-}
-
-.orange:active {
-    border-top: black 2px solid;
-    border-bottom: FF9933 2px solid;
-}
-
-p {
-    line-height: 10px;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
 }

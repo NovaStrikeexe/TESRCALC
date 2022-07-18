@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace TestNetCalc.Models
 {
+    /**
+    *  ResultOfMathExpression - класс содержащий информацию о результате проведенной математической операции
+    */
     public class ResultOfMathExpression
     {
         public double value { get; set; }

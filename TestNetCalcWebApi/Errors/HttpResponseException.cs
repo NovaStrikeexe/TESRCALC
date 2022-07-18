@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace TestNetCalcWebApi.Errors
 {
+    /**
+    * HttpResponseException - класс отвечающий содержания HttpResponse
+    */
     public class HttpResponseException : Exception
     {
-        public int Status { get; set; } = 500;
+        public int Status { get; set; }
 
         public object Value { get; set; }
     }
